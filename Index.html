@@ -1,418 +1,744 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classic Respawn - Fair Prices for Retro Games</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Sell Retro Games for Cash | Classic Respawn - Fair Prices Nationwide</title>
+    <meta name="description" content="Sell your old video games & consoles for top dollar. We buy Nintendo, PlayStation, Xbox, Sega & more. Free shipping, fair quotes in 12 hours. Get cash for your retro collection today!">
+    <meta name="keywords" content="sell retro games, buy old video games, cash for games, nintendo buyer, retro game collection, sell nintendo games, sell playstation games">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Classic Respawn - Sell Retro Games for Cash">
+    <meta property="og:description" content="Turn your old games into cash! We pay 2-3x more than retail stores with free shipping nationwide.">
+    <meta property="og:url" content="https://classicrespawn.netlify.app">
+    <meta property="og:type" content="website">
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Classic Respawn",
+      "description": "We buy retro video games and consoles for cash with fair pricing and free shipping nationwide",
+      "url": "https://classicrespawn.com",
+      "email": "cameron@classicrespawn.com",
+      "areaServed": "United States",
+      "serviceType": "Video Game Buyer"
+    }
+    </script>
+
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-body {
-    font-family: 'Courier New', 'Monaco', 'Lucida Console', monospace;
-    background: linear-gradient(135deg, #000000 0%, #374151 25%, #6b7280 50%, #000000 100%);
-    color: #ffffff;
-    line-height: 1.6;
-    overflow-x: hidden;
-    min-height: 100vh;
-}
+        body {
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
 
-/* Retro Grid Background */
-.retro-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        linear-gradient(0deg, transparent 24%, rgba(255,255,255,.05) 25%, rgba(255,255,255,.05) 26%, transparent 27%, transparent 74%, rgba(255,255,255,.05) 75%, rgba(255,255,255,.05) 76%, transparent 77%, transparent),
-        linear-gradient(90deg, transparent 24%, rgba(255,255,255,.05) 25%, rgba(255,255,255,.05) 26%, transparent 27%, transparent 74%, rgba(255,255,255,.05) 75%, rgba(255,255,255,.05) 76%, transparent 77%, transparent);
-    background-size: 20px 20px;
-    z-index: -1;
-}
+        /* Animated CRT Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, transparent 50%, rgba(0, 255, 0, 0.03) 50%),
+                linear-gradient(0deg, transparent 50%, rgba(0, 255, 0, 0.03) 50%);
+            background-size: 4px 4px;
+            pointer-events: none;
+            z-index: 1;
+            animation: scanlines 0.1s linear infinite;
+        }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 1;
-}
+        @keyframes scanlines {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(4px); }
+        }
 
-/* Hero Section */
-.hero {
-    text-align: center;
-    padding: 60px 0;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(55, 65, 81, 0.8) 100%);
-    border-bottom: 4px solid #ffffff;
-}
+        /* Retro Grid Background */
+        .retro-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 25% 25%, #ff00ff22 0%, transparent 70%),
+                radial-gradient(circle at 75% 75%, #00ffff22 0%, transparent 70%),
+                linear-gradient(135deg, #000428 0%, #004e92 100%);
+            z-index: -1;
+        }
 
-.hero h1 {
-    font-size: 3.5rem;
-    font-weight: bold;
-    text-shadow: 3px 3px 0px #000000;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
-    font-family: 'Courier New', monospace;
-    color: #ffffff;
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
 
-.hero .tagline {
-    font-size: 1.2rem;
-    color: #d1d5db;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
-}
+        /* Neon Glow Effect */
+        .neon-text {
+            text-shadow: 
+                0 0 5px currentColor,
+                0 0 10px currentColor,
+                0 0 15px currentColor,
+                0 0 20px #ff00ff,
+                0 0 35px #ff00ff,
+                0 0 40px #ff00ff;
+            animation: flicker 2s infinite alternate;
+        }
 
-.hero .description {
-    font-size: 1.1rem;
-    color: #e5e7eb;
-    margin-bottom: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
 
-/* CTA Buttons */
-.cta-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+            background: 
+                linear-gradient(45deg, rgba(255, 0, 255, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%),
+                rgba(0, 0, 0, 0.8);
+            border-bottom: 4px solid #00ff00;
+            border-image: linear-gradient(90deg, #ff00ff, #00ffff) 1;
+            position: relative;
+        }
 
-.btn {
-    padding: 15px 30px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-decoration: none;
-    border: 3px solid;
-    transition: all 0.3s ease;
-    letter-spacing: 1px;
-    position: relative;
-    overflow: hidden;
-    font-family: 'Courier New', monospace;
-    display: inline-block;
-}
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 0, 0.05) 2px,
+                    rgba(0, 255, 0, 0.05) 4px
+                );
+            pointer-events: none;
+        }
 
-.btn-primary {
-    background: #000000;
-    color: #ffffff;
-    border-color: #000000;
-}
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: normal;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            color: #00ffff;
+            text-transform: uppercase;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
 
-.btn-primary:hover {
-    background: #374151;
-    transform: scale(1.05);
-}
+        @keyframes glow {
+            from {
+                text-shadow: 
+                    0 0 10px #00ffff,
+                    0 0 20px #00ffff,
+                    0 0 30px #00ffff,
+                    0 0 40px #00ffff;
+            }
+            to {
+                text-shadow: 
+                    0 0 5px #00ffff,
+                    0 0 10px #00ffff,
+                    0 0 15px #00ffff,
+                    0 0 20px #00ffff;
+            }
+        }
 
-.btn-secondary {
-    background: #ffffff;
-    color: #111827;
-    border-color: #ffffff;
-}
+        .hero .tagline {
+            font-size: 1rem;
+            color: #ff00ff;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px #ff00ff;
+        }
 
-.btn-secondary:hover {
-    background: #d1d5db;
-    color: #000000;
-    transform: scale(1.05);
-}
+        .hero .description {
+            font-size: 0.9rem;
+            color: #fff;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
 
-/* Items We Buy Section */
-.items-we-buy {
-    padding: 60px 0;
-    background: linear-gradient(135deg, rgba(55, 65, 81, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%);
-}
+        /* Retro Button */
+        .btn {
+            display: inline-block;
+            padding: 20px 40px;
+            font-size: 1rem;
+            font-family: 'Press Start 2P', monospace;
+            text-decoration: none;
+            border: 3px solid;
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            color: #000;
+            border-color: #fff;
+            box-shadow: 
+                0 0 20px rgba(255, 0, 255, 0.5),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
 
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 0px #000000;
-    margin-bottom: 10px;
-    color: #ffffff;
-    font-family: 'Courier New', monospace;
-}
+        .btn:hover {
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            transform: scale(1.05);
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.8),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+        }
 
-.section-subtitle {
-    text-align: center;
-    font-size: 1.1rem;
-    color: #d1d5db;
-    margin-bottom: 40px;
-}
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
 
-.console-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    max-width: 800px;
-    margin: 0 auto;
-}
+        .btn:hover::before {
+            left: 100%;
+        }
 
-.console-item {
-    background: #ffffff;
-    color: #111827;
-    border: 2px solid #6b7280;
-    padding: 15px;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    font-weight: bold;
-    font-family: 'Courier New', monospace;
-}
+        /* SEO Content Section */
+        .seo-content {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 60px 0;
+            color: #fff;
+            border-top: 2px solid #00ff00;
+            border-bottom: 2px solid #00ff00;
+        }
 
-.console-item:hover {
-    transform: translateY(-3px);
-    border-color: #000000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-}
+        .seo-content h2 {
+            color: #00ff00;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 0 0 10px #00ff00;
+        }
 
-/* How It Works Section */
-.how-it-works {
-    padding: 60px 0;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(55, 65, 81, 0.6) 100%);
-}
+        .seo-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 0.8rem;
+        }
 
-.steps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
+        .seo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
 
-.step-card {
-    text-align: center;
-    padding: 30px 20px;
-    background: #ffffff;
-    color: #111827;
-    border: 3px solid #6b7280;
-    position: relative;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
+        .seo-card {
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.1), rgba(0, 255, 255, 0.1));
+            border: 2px solid #00ffff;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+        }
 
-.step-number {
-    background: #000000;
-    color: #ffffff;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0 auto 20px;
-    font-family: 'Courier New', monospace;
-}
+        .seo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff);
+            animation: rainbow 3s linear infinite;
+        }
 
-.step-card h3 {
-    font-size: 1.2rem;
-    color: #111827;
-    margin-bottom: 15px;
-    font-weight: bold;
-    font-family: 'Courier New', monospace;
-}
+        @keyframes rainbow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 0%; }
+        }
 
-.step-card p {
-    color: #4b5563;
-    font-size: 0.95rem;
-}
+        .seo-card h3 {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #ff00ff;
+            text-shadow: 0 0 5px #ff00ff;
+        }
 
-/* Contact Section */
-.contact {
-    padding: 60px 0;
-    background: linear-gradient(135deg, rgba(55, 65, 81, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%);
-    text-align: center;
-}
+        .seo-card ul {
+            list-style: none;
+            margin-left: 0;
+        }
 
-.contact-method {
-    background: #ffffff;
-    color: #111827;
-    border: 3px solid #6b7280;
-    padding: 40px;
-    text-align: center;
-    transition: transform 0.3s ease;
-    max-width: 400px;
-    margin: 0 auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
+        .seo-card li {
+            margin-bottom: 10px;
+            color: #fff;
+            font-size: 0.7rem;
+            position: relative;
+            padding-left: 20px;
+        }
 
-.contact-method:hover {
-    transform: scale(1.05);
-    border-color: #000000;
-}
+        .seo-card li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+        }
 
-.contact-method h3 {
-    font-size: 1.5rem;
-    color: #111827;
-    margin-bottom: 20px;
-    font-weight: bold;
-    font-family: 'Courier New', monospace;
-}
+        /* Console Items */
+        .items-we-buy {
+            padding: 80px 0;
+            background: 
+                linear-gradient(45deg, rgba(255, 0, 255, 0.05), rgba(0, 255, 255, 0.05)),
+                rgba(0, 0, 0, 0.9);
+        }
 
-.contact-method p {
-    color: #4b5563;
-    margin-bottom: 30px;
-    font-size: 1.1rem;
-}
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #00ffff;
+            text-shadow: 0 0 20px #00ffff;
+            text-transform: uppercase;
+        }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .cta-buttons {
-        justify-content: center;
-    }
-    
-    .btn {
-        width: 100%;
-        max-width: 300px;
-    }
-    
-    .console-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-    
-    .console-item {
-        padding: 12px;
-        font-size: 0.9rem;
-    }
-    
-    .contact-method {
-        padding: 30px 20px;
-    }
-}
-```
+        .section-subtitle {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #fff;
+            margin-bottom: 50px;
+        }
 
-</style>
+        .console-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .console-item {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(255, 0, 255, 0.1));
+            border: 2px solid;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.7rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Console-specific colors */
+        .console-item:nth-child(1), .console-item:nth-child(2), 
+        .console-item:nth-child(3), .console-item:nth-child(4),
+        .console-item:nth-child(5), .console-item:nth-child(6),
+        .console-item:nth-child(7) {
+            border-color: #ff0000;
+            color: #ff0000;
+        }
+
+        .console-item:nth-child(8), .console-item:nth-child(9), 
+        .console-item:nth-child(10) {
+            border-color: #0080ff;
+            color: #0080ff;
+        }
+
+        .console-item:nth-child(11), .console-item:nth-child(12) {
+            border-color: #00ff00;
+            color: #00ff00;
+        }
+
+        .console-item:nth-child(13), .console-item:nth-child(14), 
+        .console-item:nth-child(15), .console-item:nth-child(16) {
+            border-color: #ffff00;
+            color: #ffff00;
+        }
+
+        .console-item:nth-child(17), .console-item:nth-child(18) {
+            border-color: #ff8000;
+            color: #ff8000;
+        }
+
+        .console-item:nth-child(19), .console-item:nth-child(20) {
+            border-color: #ff00ff;
+            color: #ff00ff;
+        }
+
+        .console-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 10px 30px rgba(255, 0, 255, 0.3),
+                0 0 20px currentColor;
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.2), rgba(0, 255, 255, 0.2));
+        }
+
+        .console-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .console-item:hover::before {
+            left: 100%;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 3px solid #ff00ff;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .step-card {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+            border: 2px solid #00ffff;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+        }
+
+        .step-number {
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            color: #000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            border: 3px solid #fff;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+
+        .step-card h3 {
+            font-size: 0.9rem;
+            color: #00ffff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px #00ffff;
+            text-transform: uppercase;
+        }
+
+        .step-card p {
+            color: #fff;
+            font-size: 0.7rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: 
+                linear-gradient(45deg, rgba(255, 0, 255, 0.1), rgba(0, 255, 255, 0.1)),
+                rgba(0, 0, 0, 0.9);
+            text-align: center;
+            border-top: 3px solid #00ff00;
+        }
+
+        .contact-method {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(255, 0, 255, 0.1));
+            border: 3px solid #ff00ff;
+            padding: 40px;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-method::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff);
+            animation: rainbow 2s linear infinite;
+        }
+
+        .contact-method h3 {
+            font-size: 1.2rem;
+            color: #ff00ff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        .contact-method p {
+            color: #fff;
+            margin-bottom: 30px;
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #00ffff;
+        }
+
+        .contact-info p {
+            color: #00ffff;
+            font-size: 0.7rem;
+        }
+
+        /* Plus Section */
+        .plus-section {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(45deg, rgba(255, 0, 255, 0.1), rgba(0, 255, 255, 0.1));
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+        }
+
+        .plus-section p {
+            color: #00ff00;
+            font-size: 0.9rem;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .btn {
+                padding: 15px 25px;
+                font-size: 0.8rem;
+            }
+            
+            .console-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .console-item {
+                padding: 15px;
+                font-size: 0.6rem;
+            }
+            
+            .seo-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-method {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="retro-bg"></div>
-
-```
-<!-- Hero Section -->
-<section class="hero">
-    <div class="container">
-        <h1>CLASSIC RESPAWN</h1>
-        <p class="tagline">&gt; REVIVE YOUR CLASSICS &lt;</p>
-        <p class="description">
-            Turn your dusty retro games into fair cash. We pay 2-3x more than retail stores 
-            with free shipping and lightning-fast payments.
-        </p>
-        
-        <div class="cta-buttons">
-            <a href="mailto:cameron@classicrespawn.com?subject=Game Quote Request" class="btn btn-primary">
-                📧 EMAIL FOR QUOTE
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- Items We Buy Section -->
-<section class="items-we-buy">
-    <div class="container">
-        <h2 class="section-title">&gt; RETRO CONSOLES WE BUY</h2>
-        <p class="section-subtitle">From classic 8-bit to early 2000s systems - we buy them all!</p>
-        
-        <div class="console-grid">
-            <div class="console-item">Nintendo Entertainment System (NES)</div>
-            <div class="console-item">Super Nintendo (SNES)</div>
-            <div class="console-item">Nintendo 64</div>
-            <div class="console-item">Nintendo GameCube</div>
-            <div class="console-item">Game Boy / Game Boy Color</div>
-            <div class="console-item">Game Boy Advance</div>
-            <div class="console-item">Nintendo DS</div>
-            <div class="console-item">PlayStation 1 (PSX)</div>
-            <div class="console-item">PlayStation 2 (PS2)</div>
-            <div class="console-item">PlayStation Portable (PSP)</div>
-            <div class="console-item">Original Xbox</div>
-            <div class="console-item">Xbox 360</div>
-            <div class="console-item">Sega Genesis</div>
-            <div class="console-item">Sega Saturn</div>
-            <div class="console-item">Sega Dreamcast</div>
-            <div class="console-item">Game Gear</div>
-            <div class="console-item">Atari 2600</div>
-            <div class="console-item">Atari 7800</div>
-            <div class="console-item">Neo Geo</div>
-            <div class="console-item">TurboGrafx-16</div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 40px;">
-            <p style="color: #d1d5db; font-size: 1.1rem;">
-                <strong>Plus:</strong> Games, Controllers, Accessories & More!<br>
-                Don't see your console? We probably buy it - just ask!
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="neon-text">Classic Respawn</h1>
+            <p class="tagline">&gt; REVIVE YOUR CLASSICS &lt;</p>
+            <p class="description">
+                Turn your old video games and consoles into fair cash. We pay 2-3x more than retail stores 
+                with free shipping and lightning-fast payments nationwide.
             </p>
-        </div>
-    </div>
-</section>
-
-<!-- How It Works Section -->
-<section class="how-it-works">
-    <div class="container">
-        <h2 class="section-title">&gt; HOW IT WORKS</h2>
-        <p class="section-subtitle">Simple, fast, and fair - just the way selling should be!</p>
-        
-        <div class="steps-grid">
-            <div class="step-card">
-                <div class="step-number">1</div>
-                <h3>SEND ITEM LIST/PHOTOS</h3>
-                <p>Email us a list of your items. For more accurate quotes include clear photos of your items: Include front, back, and any damage.</p>
-            </div>
             
-            <div class="step-card">
-                <div class="step-number">2</div>
-                <h3>GET QUOTE</h3>
-                <p>Receive fair quotes within 12 hours based on current market values and honest condition assessment.</p>
-            </div>
-            
-            <div class="step-card">
-                <div class="step-number">3</div>
-                <h3>SHIP FREE</h3>
-                <p>Accept our quote and we'll email you a prepaid shipping label. Drop off at any UPS location.</p>
-            </div>
-            
-            <div class="step-card">
-                <div class="step-number">4</div>
-                <h3>GET PAID</h3>
-                <p>We inspect your items and send payment within 24 hours via PayPal, Venmo, or Cashapp.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section class="contact">
-    <div class="container">
-        <h2 class="section-title">&gt; GET YOUR QUOTE</h2>
-        <p class="section-subtitle">Ready to turn your games into cash? Send us your photos!</p>
-        
-        <div class="contact-method">
-            <h3>📧 EMAIL FOR QUOTE</h3>
-            <p>Send us clear photos of your retro games and consoles. We'll respond with fair quotes within 12 hours!</p>
-            <a href="mailto:cameron@classicrespawn.com?subject=Game Quote Request" class="btn btn-primary">
-                EMAIL US NOW
+            <a href="mailto:cameron@classicrespawn.com?subject=Game Quote Request" class="btn">
+                📧 Get Free Quote
             </a>
+        </div>
+    </section>
+
+    <!-- SEO Content Section -->
+    <section class="seo-content">
+        <div class="container">
+            <h2>Why Choose Classic Respawn to Sell Your Retro Games?</h2>
+            <p>Looking for the best place to sell old video games? Classic Respawn specializes in buying retro game collections with fair, market-based pricing. Whether you have Nintendo classics, PlayStation rarities, or complete console collections, we make selling your games simple and profitable.</p>
             
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #e5e7eb;">
-                <p style="color: #6b7280; font-size: 0.9rem;">
-                    📧 cameron@classicrespawn.com<br>
-                    🕐 Response Time: Within 12 hours<br>
-                    📦 Free Shipping: Nationwide
+            <div class="seo-grid">
+                <div class="seo-card">
+                    <h3>Fair Market Pricing</h3>
+                    <ul>
+                        <li>Based on current market values</li>
+                        <li>2-3x more than retail stores</li>
+                        <li>Expert evaluation of rare games</li>
+                        <li>No lowball offers</li>
+                    </ul>
+                </div>
+                
+                <div class="seo-card">
+                    <h3>Fast & Easy Process</h3>
+                    <ul>
+                        <li>Quotes within 12 hours</li>
+                        <li>Free shipping nationwide</li>
+                        <li>Payment in 24 hours</li>
+                        <li>No hidden fees</li>
+                    </ul>
+                </div>
+                
+                <div class="seo-card">
+                    <h3>What We Buy</h3>
+                    <ul>
+                        <li>Nintendo games & consoles</li>
+                        <li>PlayStation 1, 2, PSP</li>
+                        <li>Original Xbox & Xbox 360</li>
+                        <li>Sega Genesis, Saturn, Dreamcast</li>
+                        <li>Handheld systems & games</li>
+                        <li>Controllers & accessories</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Items We Buy Section -->
+    <section class="items-we-buy">
+        <div class="container">
+            <h2 class="section-title">Retro Game Consoles We Buy for Cash</h2>
+            <p class="section-subtitle">From classic 8-bit systems to early 2000s consoles - we buy them all at fair prices!</p>
+            
+            <div class="console-grid">
+                <div class="console-item">Nintendo Entertainment System (NES)</div>
+                <div class="console-item">Super Nintendo (SNES)</div>
+                <div class="console-item">Nintendo 64</div>
+                <div class="console-item">Nintendo GameCube</div>
+                <div class="console-item">Game Boy / Game Boy Color</div>
+                <div class="console-item">Game Boy Advance</div>
+                <div class="console-item">Nintendo DS</div>
+                <div class="console-item">PlayStation 1 (PSX)</div>
+                <div class="console-item">PlayStation 2 (PS2)</div>
+                <div class="console-item">PlayStation Portable (PSP)</div>
+                <div class="console-item">Original Xbox</div>
+                <div class="console-item">Xbox 360</div>
+                <div class="console-item">Sega Genesis</div>
+                <div class="console-item">Sega Saturn</div>
+                <div class="console-item">Sega Dreamcast</div>
+                <div class="console-item">Game Gear</div>
+                <div class="console-item">Atari 2600</div>
+                <div class="console-item">Atari 7800</div>
+                <div class="console-item">Neo Geo</div>
+                <div class="console-item">TurboGrafx-16</div>
+            </div>
+            
+            <div class="plus-section">
+                <p>
+                    <strong>Plus:</strong> Games, Controllers, Accessories & More!<br>
+                    Don't see your console? We probably buy it - just ask for a quote!
                 </p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How to Sell Your Retro Games for Cash</h2>
+            <p class="section-subtitle">Simple, fast, and fair - just the way selling should be!</p>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Send Item List/Photos</h3>
+                    <p>Email us a list of your retro games and consoles. For more accurate quotes, include clear photos showing front, back, and any damage.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Get Quote</h3>
+                    <p>Receive fair quotes within 12 hours based on current market values and honest condition assessment. No obligation to sell.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Ship Free</h3>
+                    <p>Accept our quote and we'll email you a prepaid shipping label. Drop off at any UPS location - shipping is completely free.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Get Paid</h3>
+                    <p>We inspect your items and send payment within 24 hours via PayPal, Venmo, or CashApp. Fast, secure payments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">Get Your Free Quote Today</h2>
+            <p class="section-subtitle">Ready to turn your retro games into cash? Contact us now!</p>
+            
+            <div class="contact-method">
+                <h3>📧 Email for Free Quote</h3>
+                <p>Send us photos of your retro games and consoles. We'll respond with fair quotes within 12 hours - no strings attached!</p>
+                <a href="mailto:cameron@classicrespawn.com?subject=Game Quote Request" class="btn">
+                    Email Us Now
+                </a>
+                
+                <div class="contact-info">
+                    <p>
+                        📧 cameron@classicrespawn.com<br>
+                        🕐 Response Time: Within 12 hours<br>
+                        📦 Free Shipping: Nationwide USA
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
